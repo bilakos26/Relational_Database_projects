@@ -4,7 +4,7 @@ This is one of the required projects to earn your certification. For this projec
 ## Start
 1. Open the `periodic_table` folder to your terminal
 2. Insert the database 
-> Insert the original database (`periodic_table_original.sql`) if you want to use the `pre-word.sh` script, otherwise insert the `periodic_table.sql` file and you are done.
+> Insert the original database (`periodic_table_original.sql`) if you want to use the `pre-word.sh` script, otherwise insert the `periodic_table.sql` and follow the **Start** instruction from the `5th` task.
 ```shell
 psql -U freecodecamp < periodic_table_original.sql
 ```
