@@ -1,6 +1,13 @@
 # Number Guessing Game
 For this project, you will use Bash scripting, PostgreSQL, and Git to create a number guessing game that runs in the terminal and saves user information.
 
+## Start
+
+Start by importing the database
+```postgresql
+psql -U postgres < number_guess.sql
+```
+
 ## Instructions
 To complete this project, you need to write a script that generates a random number between 1 and 1000 for users to guess. Create a `number_guess` database to hold the information suggested in the user stories. Connect to the interactive psql shell with `psql --username=freecodecamp --dbname=postgres` to create the database. In your script, you can create a `PSQL` variable for querying the database like this: `PSQL="psql --username=freecodecamp --dbname=<database_name> -t --no-align -c"`. Your script should only ask for input from the user to get the username and to take guesses. The tests will add users to your database when the script has that ability, feel free to delete those. Some script related user stories may not pass until the script is completely working. Don't forget to commit your work frequently.
 
@@ -22,3 +29,21 @@ To complete this project, you need to write a script that generates a random num
 14. The message for the first commit should be `Initial commit`
 15. The rest of the commit messages should start with `fix:`, `feat:`, `refactor:`, `chore:`, or `test:`
 16. You should finish your project while on the `main` branch, your working tree should be clean, and you should not have any uncommitted changes
+
+## Database 
+
+```postgresql
+CREATE DATABASE number_guess;
+
+CREATE TABLE users(
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(22) NOT NULL UNIQUE
+);
+
+CREATE TABLE games_played(
+    game_id SERIAL PRIMARY KEY,
+    secret_number INT NOT NULL,
+    guesses INT NOT NULL DEFAULT 0,
+    user_id INT NOT NULL REFERENCES users(user_id)
+);
+```
